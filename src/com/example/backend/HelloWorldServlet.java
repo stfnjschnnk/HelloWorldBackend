@@ -39,15 +39,15 @@ public class HelloWorldServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String lastName = request.getParameter("lastName");
+		String firstName = request.getParameter("firstName");
 		User user = null;
 		
 		try {
 			Connection con = getConnection("localhost", 3306, "Hello-World",
 					"root", "oNrBE6rvoyMmQDV8");
 			PreparedStatement statement = con
-					.prepareStatement("SELECT * FROM User WHERE lastName = ?");
-			statement.setString(1, lastName);
+					.prepareStatement("SELECT * FROM User WHERE firstName = ?");
+			statement.setString(1, firstName);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
 				user = new User();
