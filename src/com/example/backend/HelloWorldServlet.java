@@ -54,12 +54,14 @@ public class HelloWorldServlet extends HttpServlet {
 				user.id = result.getInt("id");
 				user.firstName = result.getString("firstName");
 				user.lastName = result.getString("lastName");
+				user.statement = result.getString("statement");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+
 		String userAsJson = new Gson().toJson(user);
 
 		ServletOutputStream outputStream = response.getOutputStream();
